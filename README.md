@@ -3,7 +3,7 @@
 ## 📌 Project Overview
 This project is an Enterprise-Grade Conversational AI Chatbot designed to help candidates prepare for technical interviews. Built using a **Retrieval-Augmented Generation (RAG)** architecture, the system scraps data from GeeksForGeeks across DSA, System Design, CS Fundamentals, and HR Q&A, indexes it locally, and delivers highly accurate, context-grounded responses. 
 
-This repository fully implements the core requirements alongside **both bonus criteria** (Hindi/Hinglish Language Support and WhatsApp/Twilio Core Integration).
+This repository fully implements the core requirements alongside **both bonus criteria** (Hindi/Hinglish Language Support.
 
 ---
 
@@ -31,7 +31,6 @@ This repository fully implements the core requirements alongside **both bonus cr
 ├── scraper_indexer.py       # Web scraping, text processing, and indexing script
 ├── rag_engine.py            # Main RAG engine and LangChain LCEL pipeline compilation
 ├── app.py                   # Streamlit Frontend Web Dashboard UI 
-├── whatsapp_app.py          # Twilio webhook implementation for WhatsApp channel integration
 ├── Requirements.txt         # Complete Python dependency configuration
 ├── Dockerfile               # Multi-stage image assembly configuration
 ├── .gitignore               # Strict file ignore mappings (.env, vector files, cache)
@@ -62,29 +61,3 @@ To launch the primary web-based application panel:
 
 Bash
 streamlit run app.py
-5. Launch WhatsApp Sandbox Integration (Bonus Feature)
-To execute the backend asynchronous webhook for the Twilio WhatsApp pipeline:
-
-Run the local service application:
-
-Bash
-python whatsapp_app.py
-Open a public tunnel matching your local port interface via Ngrok:
-
-Bash
-ngrok http 5000
-Map the generated HTTPS URL string with the /whatsapp path directly into your Twilio Sandbox Console inbound webhook settings.
-
-🐳 Containerized Production Deployment (Docker)
-This application is fully containerized to isolate dependencies and guarantee environment-agnostic execution.
-
-Build the Image
-To build the Docker container image locally:
-
-Bash
-docker build -t tech-interview-bot .
-Run the Container
-Instantiate the container process while passing system environment variables seamlessly:
-
-Bash
-docker run -p 8501:8501 --env-file .env tech-interview-bot
